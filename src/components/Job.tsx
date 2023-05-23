@@ -32,7 +32,7 @@ const useStyles = createStyles((theme, alt: boolean) => ({
     },
 
     separatedText: {
-        margin: "0.5rem 0",
+        margin: `${alt ? 0.8 : 0.5}rem 0`,
         fontSize: alt ? rem(20) : rem(16),
 
         [theme.fn.smallerThan("xs")]: {
@@ -69,6 +69,7 @@ const useStyles = createStyles((theme, alt: boolean) => ({
 
     town: {
         [theme.fn.smallerThan("xs")]: {
+            marginTop: "0.5rem",
             fontSize: rem(14),
         },
     },
@@ -133,11 +134,13 @@ export default function Job(props: Props) {
 
     const Wrapper = props.alternativeStyle ? Box : Anchor;
     const wrapperProps = props.alternativeStyle
-        ? { component: Box }
+        ? {}
         : { component: Link, to: `/job/${props.id}`, underline: false };
 
     return (
         <Card>
+            {/* eslint-disable-next-line @typescript-eslint/ban-ts-comment */}
+            {/* @ts-ignore */}
             <Wrapper
                 {...wrapperProps}
                 className={classes.anchor}
